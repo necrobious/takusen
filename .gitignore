@@ -1,0 +1,11 @@
+# use glob syntax.
+syntax: glob
+*~
+*.bak
+*.off
+*.old
+*.swp
+.DS_Store
+
+# cabal
+dist
