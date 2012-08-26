@@ -210,7 +210,7 @@ Parses ISO format datetimes, and also the variation that PostgreSQL uses.
 >      , (parts !! 3), (parts !! 4), secs, tz)
 
 
-> utcTimeToIsoString :: (Integral a, Integral b) =>
+> utcTimeToIsoString :: (Integral a, Integral b, Show a, Show b) =>
 >   UTCTime -> String -> (a -> a) -> (b -> String) -> String
 > utcTimeToIsoString utc dtSep adjYear mkSuffix =
 >   let

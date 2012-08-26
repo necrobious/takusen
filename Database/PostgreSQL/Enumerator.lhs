@@ -10,10 +10,13 @@ Portability :  non-portable
 PostgreSQL implementation of Database.Enumerator.
 
 
-> {-# OPTIONS -fglasgow-exts #-}
 > {-# LANGUAGE OverlappingInstances #-}
 > {-# LANGUAGE UndecidableInstances #-}
-
+> {-# LANGUAGE PatternGuards #-}
+> {-# LANGUAGE MultiParamTypeClasses #-}
+> {-# LANGUAGE FlexibleInstances #-}
+> {-# LANGUAGE ScopedTypeVariables #-}
+ 
 > module Database.PostgreSQL.Enumerator
 >   ( Session, connect, ConnectAttr(..)
 >   , prepareStmt, preparePrefetch

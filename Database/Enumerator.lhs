@@ -36,19 +36,17 @@ These functions will typically have the same names and intentions,
 but their specific types and usage may differ between DBMS.
 
 
-> {-# OPTIONS -fglasgow-exts #-}
 > {-# LANGUAGE CPP #-}
 > {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 > {-# LANGUAGE OverlappingInstances #-}
 > {-# LANGUAGE UndecidableInstances #-}
-
-> {-  LANGUAGE MultiParamTypeClasses #-}
-> {-  LANGUAGE RankNTypes #-}
-> {-  LANGUAGE FunctionalDependencies #-}
-> {-  LANGUAGE FlexibleInstances #-}
-> {-  LANGUAGE FlexibleContexts #-}
-
-
+> {-# LANGUAGE MultiParamTypeClasses #-}
+> {-# LANGUAGE RankNTypes #-}
+> {-# LANGUAGE FunctionalDependencies #-}
+> {-# LANGUAGE FlexibleInstances #-}
+> {-# LANGUAGE FlexibleContexts #-}
+> {-# LANGUAGE ScopedTypeVariables #-}
+ 
 
 > module Database.Enumerator
 >   (

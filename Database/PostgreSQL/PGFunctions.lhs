@@ -11,8 +11,10 @@ Simple wrappers for PostgreSQL functions (FFI) plus middle-level
 wrappers (in the second part of this file)
 
 
-> {-# OPTIONS -fglasgow-exts #-}
 > {-# LANGUAGE ForeignFunctionInterface #-}
+> {-# LANGUAGE TypeSynonymInstances #-}
+> {-# LANGUAGE FlexibleInstances #-}
+> {-# LANGUAGE ScopedTypeVariables #-}
 
 > module Database.PostgreSQL.PGFunctions where
 
