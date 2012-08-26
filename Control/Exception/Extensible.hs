@@ -111,7 +111,7 @@ module Control.Exception.Extensible (
 
 import Prelude hiding (catch)
 import Control.Concurrent hiding (throwTo)
-import qualified Control.Exception as E
+import qualified Control.OldException as E
 import Data.Dynamic
 import Data.Typeable
 import System.Exit
@@ -602,8 +602,6 @@ instance Show ErrorCall where
 
 -----
 
-instance Typeable ExitCode where
-    typeOf _ = mkTyConApp (mkTyCon "ExitCode") []
 
 instance Exception ExitCode where
     toException ee = toException (E.ExitException ee)

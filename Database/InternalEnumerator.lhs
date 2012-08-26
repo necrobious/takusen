@@ -15,6 +15,7 @@ Only the programmer for a new back-end needs to consult this file.
 
 > {-# LANGUAGE MultiParamTypeClasses #-}
 > {-# LANGUAGE FunctionalDependencies #-}
+> {-# LANGUAGE DeriveDataTypeable #-}
 
 > module Database.InternalEnumerator
 >   (

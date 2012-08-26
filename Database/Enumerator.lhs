@@ -46,6 +46,7 @@ but their specific types and usage may differ between DBMS.
 > {-# LANGUAGE FlexibleInstances #-}
 > {-# LANGUAGE FlexibleContexts #-}
 > {-# LANGUAGE ScopedTypeVariables #-}
+> {-# LANGUAGE DatatypeContexts #-}
  
 
 > module Database.Enumerator

@@ -16,6 +16,7 @@ PostgreSQL implementation of Database.Enumerator.
 > {-# LANGUAGE MultiParamTypeClasses #-}
 > {-# LANGUAGE FlexibleInstances #-}
 > {-# LANGUAGE ScopedTypeVariables #-}
+> {-# LANGUAGE DeriveDataTypeable #-}
  
 > module Database.PostgreSQL.Enumerator
 >   ( Session, connect, ConnectAttr(..)

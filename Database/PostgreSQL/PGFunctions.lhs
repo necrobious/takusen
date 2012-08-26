@@ -15,6 +15,7 @@ wrappers (in the second part of this file)
 > {-# LANGUAGE TypeSynonymInstances #-}
 > {-# LANGUAGE FlexibleInstances #-}
 > {-# LANGUAGE ScopedTypeVariables #-}
+> {-# LANGUAGE DeriveDataTypeable #-}
 
 > module Database.PostgreSQL.PGFunctions where
 
