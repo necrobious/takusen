@@ -20,7 +20,7 @@ import qualified System.Info (os)
 import System.Directory (canonicalizePath, removeFile)
 import System.Environment (getEnv)
 import System.FilePath (combine, dropFileName, FilePath, pathSeparators)
-import System.IO.Error (try)
+import System.IO.Error (tryIOError,catchIOError)
 import Data.List (isInfixOf)
 import Data.Maybe (fromJust)
 import Data.Monoid (mconcat)
@@ -55,7 +55,7 @@ main = defaultMainWithHooks autoconfUserHooks
   where
     preConf :: Args -> ConfigFlags -> IO HookedBuildInfo
     preConf args flags = do
-      try (removeFile "Takusen.buildinfo")
+      tryIOError (removeFile "Takusen.buildinfo")
       return emptyHookedBuildInfo
     postConf :: Args -> ConfigFlags -> PackageDescription -> LocalBuildInfo -> IO ()
     postConf args flags pkgdesc localbuildinfo = do
@@ -101,7 +101,7 @@ makeConfig path libDir includeDir = do
 
 maybeGetEnv :: String -> IO (Maybe String)
 maybeGetEnv env = do
-  catch ( getEnv env >>= return . Just ) ( const (return Nothing) )
+  catchIOError ( getEnv env >>= return . Just ) ( const (return Nothing) )
 
 -- Check that the program is in the buildtools.
 -- If it is, then run the action (which should return BuildInfo).
@@ -149,13 +149,13 @@ configOracle verbose buildtools = do
 configSqlite3 verbose buildtools = do
   guardProg sqlite3Program buildtools $ do
     if isWindows
-      then guardPath (programFindLocation sqlite3Program verbose) "Sqlite3" verbose $ \path -> do
+      then guardPath (programFindLocation sqlite3Program verbose []) "Sqlite3" verbose $ \path -> do
         makeConfig (dropFileName path) "" ""
       else return emptyBuildInfo
 
 configPG verbose buildtools = do
   guardProg pgConfigProgram buildtools $ do
-  guardPath (programFindLocation pgConfigProgram verbose) "PostgreSQL" verbose $ \pq_config_path -> do
+  guardPath (programFindLocation pgConfigProgram verbose []) "PostgreSQL" verbose $ \pq_config_path -> do
   lib_dirs <- rawSystemStdout verbose pq_config_path ["--libdir"]
   inc_dirs <- rawSystemStdout verbose pq_config_path ["--includedir"]
   inc_dirs_server <- rawSystemStdout verbose pq_config_path ["--includedir-server"]
